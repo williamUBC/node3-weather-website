@@ -5,7 +5,7 @@ fetch('http://puzzle.mead.io/puzzle')
     .then(data => console.log(data));
 
 const getWeather = (loc) => {
-    fetch(`http://localhost:3000/weather?address=${loc}`)
+    fetch(`/weather?address=${loc}`)
         .then((response) => response.json())
         .then(data => {
             if (!data.error) {
