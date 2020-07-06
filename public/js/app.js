@@ -8,9 +8,10 @@ const getWeather = (loc) => {
     fetch(`/weather?address=${loc}`)
         .then((response) => response.json())
         .then(data => {
-            if (!data.error) {
-                const {name, temperature} = data;
-                message1.textContent = `The temperature of ${name} is ${temperature}.`;
+            if (!data.error) {                
+                const {name, temperature, precipitation, decription, icon} = data;
+                weatherIcon.src = icon;
+                message1.textContent = `${loc} is ${decription}. The temperature of it is ${temperature} and the precipitation level is ${precipitation}.`;
             } else {
                 throw new Error(data.error);                
             }
@@ -22,6 +23,7 @@ const getWeather = (loc) => {
 
 const weatherForm = document.querySelector('form');
 const search = document.querySelector('input');
+const weatherIcon = document.getElementById('img-weather-icon'); 
 const message1 = document.getElementById('message-1');
 const message2 = document.getElementById('message-2');
 

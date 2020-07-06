@@ -9,15 +9,13 @@ const forecastPromise = (lon, lat) => {
             } else if (response.body.error) {
                 reject('Unable to find location');
             } else {
-                const data = response.body.current;                
-                const tem = data.temperature;
-                const precip = data.precip;
-                const name = response.body.location.name;
-                
+                const data = response.body;                
                 resolve({
-                    name: name,
-                    temperature: tem,
-                    precipitation: precip
+                    name: data.location.name,
+                    temperature: data.current.temperature,
+                    precipitation: data.current.precip,
+                    decription: data.current.weather_descriptions[0],
+                    icon: data.current.weather_icons[0]
                 });
             }
         })

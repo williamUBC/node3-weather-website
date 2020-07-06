@@ -55,9 +55,12 @@ app.get('/weather', (req, res) => {
         .then(({ longitude, latitude } = {}) => {
             return forecastPromise(longitude, latitude)
         })
-        .then(({ name, temperature } = {}) => res.send({
+        .then(({ name, temperature, precipitation, decription, icon } = {}) => res.send({
             name,
-            temperature
+            temperature, 
+            precipitation, 
+            decription, 
+            icon
         }))
         .catch(error => res.send({error}));
 
