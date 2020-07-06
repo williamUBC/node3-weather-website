@@ -1,5 +1,3 @@
-console.log('client side JS file is loaded');
-
 fetch('http://puzzle.mead.io/puzzle')
     .then((response) => {
         return response.json();// To extract the JSON body content from the response, we use the json() method 
